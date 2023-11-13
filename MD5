@@ -1,8 +1,8 @@
-8f45ea4e3cdf69778d581e6ab9e1658a *DESCRIPTION
+9e74e54cd4e433ad1d50321b774a9b7a *DESCRIPTION
 44f90c6000ae7d7feefa667bfc739e5c *LICENSE
 cb5ec6cfe4bc6607365a2c61ae9abce7 *NAMESPACE
-49bfbbc43ee2dae23f04bde3ebc6de46 *NEWS.md
-1ce21e42e0b33ec33cf222f4cc2ab20b *R/fl_DownloadFjord.R
+13abd241a6828cc845029402e44b7ccc *NEWS.md
+05146b4e1a0c70daf9851597aacd8743 *R/fl_DownloadFjord.R
 b50c7b6aa97f00f72107f3837c4ac871 *R/fl_ListFjords.R
 54241d694e76aa512c53617209c07c79 *R/fl_LoadFjord.R
 d2f3042dde8fb60f0356e27959be500a *R/fl_colorscales.R
@@ -21,7 +21,7 @@ cacb9cae10b4410e4961575c73325e65 *R/flplot_Pfunction.R
 509103b52e2ac76dc1987869e37f2a16 *build/vignette.rds
 55ccbac3b72ce94f92d89ed5ab226dca *inst/doc/fl_example.R
 72c56907b0d7d320db9a43f204c59592 *inst/doc/fl_example.Rmd
-752c0e751e120651346e5d286b327228 *inst/doc/fl_example.html
+9cb0de2f986300ecb194887eebfd0fa9 *inst/doc/fl_example.html
 5a4c6290b9a77ecea79561fffd124184 *man/cs_BuYlRd.Rd
 5d2835d20605f4417497623b24971a4c *man/cs_blue.Rd
 07c0c59e8699b09ccc087c5ec228a428 *man/cs_blye.Rd
@@ -41,9 +41,9 @@ edb9fcb547f1023a5bebe2c26d0c0544 *man/flget_Pfunction.Rd
 086e264c8339b3309a7db02d53f0a64f *man/flplot_climatology.Rd
 6922858517e86f4d1030d915b19412cb *man/flplot_land.Rd
 1fa6875ac9a3eb6efe50940c697a5fba *tests/testthat.R
-5b41d59e28a02dea8db80e008506ebc6 *tests/testthat/Rplots.pdf
+967abfed1acfaed98b7363a8f967667f *tests/testthat/Rplots.pdf
 6ac5030419f5c43810ce43c20afa767d *tests/testthat/test-fl_DownloadFjord.R
-91f3b20995b2af6576699f163a9c4596 *tests/testthat/test-fl_ListFjords.R
+0ad2ae800c629e163d2f40b05aa7ef63 *tests/testthat/test-fl_ListFjords.R
 463cba6f06a81e6a99a3d0c48347a116 *tests/testthat/test-fl_LoadFjord.R
 69fd566212ff0c5ee6ffce314bd633ca *tests/testthat/test-fl_colorscales.R
 dbddd7e7cfc1c8c43d7cfb975b24f3fd *tests/testthat/test-flget_PARbottomMonthlyTS.R

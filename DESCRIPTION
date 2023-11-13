@@ -1,6 +1,6 @@
 Package: FjordLight
-Version: 0.6
-Date: 2023-11-10
+Version: 0.6.1
+Date: 2023-11-13
 Title: Available Light Within the Water Column and Seafloor of Arctic
         Fjords
 Type: Package
@@ -30,9 +30,9 @@ NeedsCompilation: no
 Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-Packaged: 2023-11-11 05:00:23 UTC; rws
+Packaged: 2023-11-13 10:05:37 UTC; rws
 Author: Bernard Gentili [aut],
   Jean-Pierre Gattuso [aut] (<https://orcid.org/0000-0002-4533-4114>),
   Robert W. Schlegel [aut, cre] (<https://orcid.org/0000-0002-0705-1287>)
 Repository: CRAN
-Date/Publication: 2023-11-12 11:13:25 UTC
+Date/Publication: 2023-11-13 11:13:46 UTC

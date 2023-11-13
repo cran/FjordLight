@@ -395,7 +395,7 @@ is the default value).</p>
 <div id="list-of-available-fjords" class="section level2">
 <h2>List of available fjords</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">fl_ListFjords</span>()</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co">#&gt; [1] &quot;disko&quot; &quot;is&quot;    &quot;kong&quot;  &quot;nuup&quot;  &quot;por&quot;   &quot;stor&quot;  &quot;young&quot;</span></span></code></pre></div>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co">#&gt; [1] &quot;disko&quot;  &quot;is&quot;     &quot;kong&quot;   &quot;nuup&quot;   &quot;por&quot;    &quot;stor&quot;   &quot;tromso&quot; &quot;young&quot;</span></span></code></pre></div>
 </div>
 <div id="download-a-fjord-and-load-it-as-a-list" class="section level2">
 <h2>Download a fjord and load it as a list</h2>
@@ -407,7 +407,7 @@ is the default value).</p>
 <span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co"># but this will not save the data on our computer.</span></span>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="fu">fl_DownloadFjord</span>(fjord, <span class="at">dirdata =</span> <span class="fu">tempdir</span>())</span>
 <span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; ---&gt; downloading fjord kong</span></span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; kong downloaded in directory /tmp/RtmpwyfW1E</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; kong downloaded in directory /tmp/RtmpUX8hAb</span></span>
 <span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>WANT_TIME_SERIES <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
 <span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>fjorddata <span class="ot">&lt;-</span> <span class="fu">fl_LoadFjord</span>(fjord, <span class="at">dirdata =</span> <span class="fu">tempdir</span>(), <span class="at">TS =</span> WANT_TIME_SERIES)</span>
 <span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="fu">str</span>(fjorddata, <span class="at">list.len =</span> <span class="dv">15</span>)</span>
