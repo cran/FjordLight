@@ -7,25 +7,29 @@ knitr::opts_chunk$set(
 ## ----setup--------------------------------------------------------------------
 library(FjordLight)
 
-## -----------------------------------------------------------------------------
-fl_ListFjords()
+## ----eval=FALSE---------------------------------------------------------------
+#  fl_ListFjords()
 
-## -----------------------------------------------------------------------------
-# Choose a fjord from the list above
-fjord <- "kong"
-
-# If the file has already been downloaded a message will be shown
-# NB: For this example we use 'dirdata = tempdir()',
-# but this will not save the data on our computer.
-fl_DownloadFjord(fjord, dirdata = tempdir())
-WANT_TIME_SERIES <- TRUE
-fjorddata <- fl_LoadFjord(fjord, dirdata = tempdir(), TS = WANT_TIME_SERIES)
-str(fjorddata, list.len = 15)
+## ----eval=FALSE---------------------------------------------------------------
+#  # Choose a fjord from the list above
+#  fjord <- "kong"
+#  
+#  # If the file has already been downloaded a message will be shown
+#  fl_DownloadFjord(fjord)
 
 ## ----eval=FALSE---------------------------------------------------------------
 #  # Note: this will require that a folder named 'data' exists in your current workig directory
 #  # One may see one's working directory written in small text next to the version of R in the console pane
 #  fl_DownloadFjord(fjord, dirdata = "data")
+
+## -----------------------------------------------------------------------------
+# Chose to load all of the monthly bottom PAR values or not
+WANT_TIME_SERIES <- TRUE
+
+# Load he data
+fjord <- "test"
+fjorddata <- fl_LoadFjord(fjord, dirdata = system.file("extdata", package = "FjordLight"), TS = WANT_TIME_SERIES)
+str(fjorddata, list.len = 15)
 
 ## -----------------------------------------------------------------------------
 flget_geoparameters(fjorddata)
