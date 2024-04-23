@@ -4,14 +4,23 @@
 \alias{fl_DownloadFjord}
 \title{Download fjord PAR data as NetCDF files.}
 \usage{
-fl_DownloadFjord(fjord, dirdata = NULL)
+fl_DownloadFjord(fjord, layer = "PAR_B", dirdata = NULL)
 }
 \arguments{
 \item{fjord}{Expects a character vector for one of the 8 available fjords.
 See \code{\link{fl_ListFjords}} for the list of possible choices.}
 
-\item{dirdata}{The directory where the user would like to download the data.
-Default is "FjordLight.d".}
+\item{layer}{The layer of data the user wants to download. The default "PAR_B"
+will download monthly bottom PAR data, "K_PAR" will download monthly
+values for the light extinction coefficient (i.e. K_PAR) in the water column,
+"ClimSD" will download the standard deviations for the monthly climatologies, and
+"YearlySD" will download the standard deviations for the yearly climatologies.
+Note that if monthly K_PAR data are chosen, the file will be saved as e.g.
+"kong_MonthlyKpar.nc". "ClimSD" and "YearlySD" data will also have this character
+string appended to the file name. Whereas PAR_B data will be saved simply as e.g.
+"kong.nc". NB: Only the "PAR_B" data contain the full list of metadata variables.}
+
+\item{dirdata}{The directory where the user would like to download the data.}
 }
 \value{
 The downloaded NetCDF file contains the following variables:
@@ -28,7 +37,7 @@ argument. Note that these files can be multiple gigabytes in size.
 }
 \examples{
 # Choose a fjord
-fjord_code <- "test"
+fjord_code <- "kong"
 
 # Download it
 # NB: One should provide a permanent directory when downloading a file.
@@ -38,5 +47,5 @@ fl_DownloadFjord(fjord_code, dirdata = tempdir())
 
 }
 \author{
-Bernard Gentili
+Bernard Gentili and Robert Schlegel
 }

@@ -1,3 +1,42 @@
+# FjordLight 0.8 (2024-04-23)
+
+* Updated URL to download all files from PANGAEA
+* Uploaded to CRAN
+
+# FjordLight 0.7.1.9002 (2024-02-13)
+
+* Added new download and load options for 'ClimSD' and YearlySD' files
+* Corrected minor y-axis label issues
+* Updated and expanded examples vignette
+
+# FjordLight 0.7.1.9001 (2024-01-24)
+
+* Added testing file for monthly K_PAR data
+* Increasing codecov back to 100%
+
+# FjordLight 0.7.1.9000 (2024-01-22)
+
+* Added function to access monthly K_PAR data
+* Added function to plot monthly K_PAR data
+
+# FjordLight 0.7.1 (2024-01-19)
+
+* Changed download source from LOV FTP to PANGAEA
+* Added option to download and load monthly K_PAR files
+* Updated citation to show CRAN
+
+# FjordLight 0.7.0 (2023-12-29)
+
+* Updated logo
+
+# FjordLight 0.7.0 (2023-12-05)
+
+* Published package on zenodo
+
+# FjordLight 0.7.0 (2023-12-03)
+
+* Updated logo
+
 # FjordLight 0.7.0 (2023-11-30)
 
 * Functions now detect the available years and months of data within the dataset and warn users accordingly

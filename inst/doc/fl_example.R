@@ -6,6 +6,7 @@ knitr::opts_chunk$set(
 
 ## ----setup--------------------------------------------------------------------
 library(FjordLight)
+library(raster)
 
 ## ----eval=FALSE---------------------------------------------------------------
 #  fl_ListFjords()
@@ -14,19 +15,16 @@ library(FjordLight)
 #  # Choose a fjord from the list above
 #  fjord <- "kong"
 #  
-#  # If the file has already been downloaded a message will be shown
-#  fl_DownloadFjord(fjord)
-
-## ----eval=FALSE---------------------------------------------------------------
-#  # Note: this will require that a folder named 'data' exists in your current workig directory
+#  # Note: this will require that a folder named 'data' exists in your current working directory
 #  # One may see one's working directory written in small text next to the version of R in the console pane
+#  # If the file has already been downloaded a message will be shown
 #  fl_DownloadFjord(fjord, dirdata = "data")
 
 ## -----------------------------------------------------------------------------
 # Chose to load all of the monthly bottom PAR values or not
 WANT_TIME_SERIES <- TRUE
 
-# Load he data
+# Load the data
 fjord <- "test"
 fjorddata <- fl_LoadFjord(fjord, dirdata = system.file("extdata", package = "FjordLight"), TS = WANT_TIME_SERIES)
 str(fjorddata, list.len = 15)
@@ -61,6 +59,8 @@ str(sealand)
 # PAR0m and PARbottom for July
 P07 <- flget_climatology(fjorddata, optics = "PAR0m", period = "Clim", month = 7, PLOT = TRUE)
 print(P07)
+Pk7 <- flget_climatology(fjorddata, optics = "Kpar", period = "Clim", month = 7, PLOT = TRUE)
+print(Pk7)
 Pb7 <- flget_climatology(fjorddata, optics = "PARbottom", period = "Clim", month = 7, PLOT = TRUE)
 print(Pb7)
 
@@ -97,6 +97,108 @@ head(mts_2003)
 #    # columns = months (8, March to October) * years (20, 2003 to 2022) + 2 (lon lat) = 162
 #  # NB: This may be too large for some laptops, proceed with caution
 #  mts_full <- flget_PARbottomMonthlyTS(fjorddata, mode = "df", PLOT = FALSE)
+
+## ----eval=FALSE---------------------------------------------------------------
+#  # Choose a fjord from the possible options
+#  fjord <- "kong"
+#  
+#  # Note: this will require that a folder named 'data' exists in your current working directory
+#  # One may see one's working directory written in small text next to the version of R in the console pane
+#  # If the file has already been downloaded a message will be shown
+#  fl_DownloadFjord(fjord, layer = "K_PAR" dirdata = "data")
+
+## -----------------------------------------------------------------------------
+# Chose to load all of the monthly bottom PAR values or not
+WANT_TIME_SERIES <- TRUE
+
+# Load the data
+fjord <- "test"
+fjorddata_KPAR <- fl_LoadFjord(fjord, layer = "K_PAR", dirdata = system.file("extdata", package = "FjordLight"), TS = WANT_TIME_SERIES)
+str(fjorddata_KPAR, list.len = 15)
+
+## -----------------------------------------------------------------------------
+# Years 2003 to 2004 - months July to August
+mts_KPAR <- flget_KPARMonthlyTS(fjorddata_KPAR, month = 7:8, year = 2003:2004, PLOT = TRUE)
+print(mts)
+
+# Or as a data.frame
+mts_KPAR_2003 <- flget_KPARMonthlyTS(fjorddata_KPAR, year = 2003, PLOT = FALSE, mode = "df")
+head(mts_2003)
+
+## ----eval=FALSE---------------------------------------------------------------
+#  # Choose a fjord from the possible options
+#  fjord <- "kong"
+#  
+#  # Note: this will require that a folder named 'data' exists in your current working directory
+#  # One may see one's working directory written in small text next to the version of R in the console pane
+#  # If the file has already been downloaded a message will be shown
+#  fl_DownloadFjord(fjord, layer = "ClimSD", dirdata = "data")
+#  fl_DownloadFjord(fjord, layer = "YearlySD", dirdata = "data")
+
+## -----------------------------------------------------------------------------
+# Monthly climatology SD
+fjorddata_ClimSD <- fl_LoadFjord(fjord, layer = "ClimSD", dirdata = system.file("extdata", package = "FjordLight"))
+str(fjorddata_ClimSD, list.len = 15)
+fjorddata_YearlySD <- fl_LoadFjord(fjord, layer = "YearlySD", dirdata = system.file("extdata", package = "FjordLight"))
+str(fjorddata_YearlySD, list.len = 15)
+
+## -----------------------------------------------------------------------------
+# Determine coordinates
+lon <- fjorddata$longitude
+lat <- fjorddata$latitude
+str(lon); str(lat)
+
+# Select a month
+month <- 8 # August
+im <- which(fjorddata$Months == month)
+print(im)
+
+# PAR0m Standard Deviation
+PAR0mSD <- raster::raster(list(x = lon, y = lat, z = fjorddata_ClimSD$ClimPAR0mSD[, , im]))
+plot(PAR0mSD, main = paste("PAR0m StDev", month.abb[month]))
+
+# kdpar Standard Deviation
+KparSD <- raster::raster(list(x = lon, y = lat, z = fjorddata_ClimSD$ClimKparSD[, , im]))
+plot(KparSD, main = paste("Kpar StDev", month.abb[month]))
+
+# PARbottom Standard Deviation
+PARbottomSD <- raster::raster(list(x = lon, y = lat, z = fjorddata_ClimSD$ClimPARbottomSD[, , im]))
+plot(PARbottomSD, main = paste("PARbottom StDev", month.abb[month]))
+
+# PARbottom
+PAR0m <- flget_climatology(fjorddata, optics = "PAR0m", period = "Clim", month = month, PLOT = TRUE)
+
+VarCoef <- PAR0mSD / PAR0m
+plot(VarCoef, main = "PAR0m Coefficient of Variation")
+
+## -----------------------------------------------------------------------------
+# Determine coordinates
+lon <- fjorddata$longitude
+lat <- fjorddata$latitude
+str(lon); str(lat)
+
+# Choose a year
+year <- 2007
+iy <- which(fjorddata$Years == year)
+print(iy)
+
+# PAR0m Standard Deviation
+PAR0mSD <- raster::raster(list(x = lon, y = lat, z = fjorddata_YearlySD$YearlyPAR0mSD[, , iy]))
+plot(PAR0mSD, main = paste("PAR0m StDev", year))
+
+# kdpar Standard Deviation
+KparSD <- raster::raster(list(x = lon, y = lat, z = fjorddata_YearlySD$YearlyKparSD[, , iy]))
+plot(KparSD, main = paste("Kpar StDev", year))
+
+# PARbottom Standard Deviation
+PARbottomSD <- raster::raster(list(x = lon, y = lat, z = fjorddata_YearlySD$YearlyPARbottomSD[, , iy]))
+plot(PARbottomSD, main = paste("PARbottom StDev", year))
+
+# PARbottom
+PAR0m <- flget_climatology(fjorddata, optics = "PAR0m", period = "Yearly", year = year, PLOT = TRUE)
+
+VarCoef <- PAR0mSD / PAR0m
+plot(VarCoef, main = "PAR0m Coefficient of Variation")
 
 ## ----fig.width = 6, fig.height=6----------------------------------------------
 # One may create their own functions

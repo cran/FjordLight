@@ -1,6 +1,6 @@
-#' Extract monthly bottom PAR data from a NetCDF file downloaded by \code{FjordLight}.
+#' Extract monthly K_PAR data from a NetCDF file downloaded by \code{FjordLight}.
 #'
-#' This functions will extract the monthly bottom PAR data stored within a
+#' This functions will extract the monthly K_PAR data stored within a K_PAR
 #' NetCDF file downloaded via \code{\link{fl_DownloadFjord}}. Note that these data are
 #' very large. If one would prefer to work with the smaller annual or monthly climatology
 #' values, instead use \code{\link{flget_climatology}}. There are options for how the user
@@ -24,7 +24,7 @@
 #' would like the loaded data to be plotted or not.
 #'
 #' @return Depending on which arguments the user chooses, this function will return the
-#' chosen monthly bottom PAR data as a \code{RasterStack} (\code{mode = "raster"})
+#' chosen monthly K_PAR data as a \code{RasterStack} (\code{mode = "raster"})
 #' or data.frame (\code{mode = "df"}). The data.frame will contain the following columns:
 #'   \item{longitude}{degree decimals}
 #'   \item{latitude}{degree decimals}
@@ -38,36 +38,33 @@
 #' # Load ALL data
 #' fjord_code <- "test"
 #' fjorddata <- fl_LoadFjord(fjord_code,
-#'                           dirdata = system.file("extdata", package = "FjordLight"), TS = TRUE)
+#'                          dirdata = system.file("extdata", package = "FjordLight"),
+#'                          TS = TRUE, layer = "K_PAR")
 #'
 #' # Load a small subset as a data.frame
-#' mts_single <- flget_PARbottomMonthlyTS(fjorddata, month = 6, year = 2016, mode = "df", PLOT = FALSE)
+#' mts_single <- flget_KPARMonthlyTS(fjorddata, month = 6, year = 2016, mode = "df", PLOT = FALSE)
 #'
 #' # Years 2003 to 2004 - months July to August
 #' # NB: This may be too large for smaller laptops
-#' mts_many <- flget_PARbottomMonthlyTS(fjorddata, month = 7:8, year = 2003:2004, PLOT = FALSE)
+#' \donttest{
+#' mts_many <- flget_KPARMonthlyTS(fjorddata, month = 7:8, year = 2003:2004, PLOT = FALSE)
 #'
 #' # May also plot the data
-#' \donttest{
-#' mts_plot <- flget_PARbottomMonthlyTS(fjorddata, month = 6:9, year = 2010, PLOT = TRUE)
+#' mts_plot <- flget_KPARMonthlyTS(fjorddata, month = 6:9, year = 2010, PLOT = TRUE)
 #' }
 #'
 #' # For more examples: https://face-it-project.github.io/FjordLight/articles/fl_example.html
 #'
-flget_PARbottomMonthlyTS <- function(fjord,
-                                     month = NULL,
-                                     year = NULL,
-                                     mode = "raster",
-                                     PLOT = FALSE) {
+flget_KPARMonthlyTS <- function(fjord,
+                                month = NULL,
+                                year = NULL,
+                                mode = "raster",
+                                PLOT = FALSE) {
 
-  time_base <- strsplit(fjord$glob_attributes$available_months_by_year, " / ")
-  time_df <- as.data.frame(time_base, col.names = "col")
+  Years <- fjord$Years
+  Months <- fjord$Months
 
-  Years <- as.numeric(substr(time_df$col, start = 1, stop = 4))
-  Months <- strsplit(trimws(substring(time_base[[1]], 7), "both"), " ")
-  Months <- as.numeric(Months[which.max(lengths(Months))][[1]])
-
-  if(is.null(fjord$MonthlyPARbottom)) stop("MonthlyPARbottom time series not loaded")
+  if(is.null(fjord$MonthlyKpar)) stop("MonthlyKpar time series not loaded")
   available.mode <- c("raster", "df")
   if(! mode %in% available.mode) stop("Wrong mode, choose among: 'raster', 'df'")
 
@@ -83,15 +80,15 @@ flget_PARbottomMonthlyTS <- function(fjord,
     year <- Years
   }
 
-  g <- fjord[["MonthlyPARbottom"]]
+  g <- fjord[["MonthlyKpar"]]
   s <- raster::stack()
   layernames <- NULL
   for(y in year) {
     for(m in month) {
       h <- g[, , Months == m, Years == y]
-      if(!is.matrix(h)) h <- h[,,1]
+      # if(!is.matrix(h)) h <- h[,,1]
       r <- raster::raster(list(x = fjord$longitude, y = fjord$latitude, z = h))
-      layername <- paste("MonthlyPARbottom", formatC(y, format = "d", width = 4, flag = "0"),
+      layername <- paste("MonthlyKpar", formatC(y, format = "d", width = 4, flag = "0"),
                          formatC(m, format = "d", width = 2, flag = "0"), sep = ".")
       layernames <- append(layernames, layername)
       names(r) <- layername
@@ -102,7 +99,7 @@ flget_PARbottomMonthlyTS <- function(fjord,
   raster::crs(s) <- 4326
 
   if(PLOT) {
-    flplot_PARbottomMonthlyTS(s)
+    flplot_KPARMonthlyTS(s)
   }
 
   if(mode == "raster") {

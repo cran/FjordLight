@@ -4,11 +4,25 @@
 \alias{fl_LoadFjord}
 \title{Load fjord PAR data from a NetCDF file downloaded by \code{FjordLight}.}
 \usage{
-fl_LoadFjord(fjord, dirdata = NULL, TS = FALSE, verbose = FALSE)
+fl_LoadFjord(
+  fjord,
+  layer = "PAR_B",
+  dirdata = NULL,
+  TS = FALSE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{fjord}{Expects a character vector for one of the 8 available fjords.
 See \code{\link{fl_ListFjords}} for the list of possible choices.}
+
+\item{layer}{The layer of data the user wants to load. The default "PAR_B"
+will load monthly bottom PAR data. The other options, "K_PAR" will load monthly
+values for the light extinction coefficient (i.e.  K_PAR) in the water column,
+"ClimSD" will load the standard deviation values for the monthly climatologies,
+and "YearlySD" will load the standard deviation values for the yearly climatologies.
+Note that only the PAR_B files and do not contain all global values and metadata.
+The other files are in supplement to the PAR_B files.}
 
 \item{dirdata}{The directory where the user would like to load the data from.}
 
