@@ -1,7 +1,7 @@
-fdb6199d0d8a4894ec47426c4311ca8e *DESCRIPTION
+1aad6f6760908e9c0a950188e8788800 *DESCRIPTION
 44f90c6000ae7d7feefa667bfc739e5c *LICENSE
 497f6ce35bd541e1d965711988406c14 *NAMESPACE
-e626acf841adac09a3ebd34d373b0717 *NEWS.md
+82892efc446aac8db5efb9e8a00ccb8d *NEWS.md
 f5390e878d20cefadb2a16fac597fec0 *R/fl_DownloadFjord.R
 d1f1d216bfdb7145a402895d0013b9fd *R/fl_ListFjords.R
 ad0f24e50827d0a54625d17bd0a48230 *R/fl_LoadFjord.R
@@ -19,12 +19,12 @@ cacb9cae10b4410e4961575c73325e65 *R/flplot_Pfunction.R
 661eb0975827174b5d288778f53bcd6a *R/flplot_bathymetry.R
 2a81be24f1f5b5fed207e59ce69c2d66 *R/flplot_climatology.R
 70ccad4d0570c899c7786de9880c704e *R/flplot_land.R
-7436089cd9aaea23728fadc5cc8a59f9 *README.md
-2d6bac256b0a21355437b24dc082b0c0 *build/vignette.rds
-429ab7f12d056c6075d6870261dfe7d6 *inst/CITATION
+5bb0ab78aaf45856abc78f4c65e4cc43 *README.md
+431c88cff91af2835cb60d5be885d1a1 *build/vignette.rds
+afb73ee38ffa2216f8662ce2ce0b722e *inst/CITATION
 9f6cc1184c612fb27988fe3aa577f036 *inst/doc/fl_example.R
 0362765c03f93c2802512978bced2a63 *inst/doc/fl_example.Rmd
-99008acb0e34e1450cb9cec2d7125f6c *inst/doc/fl_example.html
+6d46e05559b70b87bd77a33ba4068ed2 *inst/doc/fl_example.html
 8920e27d4a2faeb1daed85a1c9fc801b *inst/extdata/test.nc
 679f5325f68cd2473ea9dc05050fad04 *inst/extdata/test_ClimSD.nc
 74ffdcdeb55ec79654caf4fc798cc2aa *inst/extdata/test_MonthlyKpar.nc
@@ -50,7 +50,7 @@ b3132d498c3711f219bad082e813255a *man/flplot_KPARMonthlyTS.Rd
 086e264c8339b3309a7db02d53f0a64f *man/flplot_climatology.Rd
 6922858517e86f4d1030d915b19412cb *man/flplot_land.Rd
 1fa6875ac9a3eb6efe50940c697a5fba *tests/testthat.R
-866fa4b1af36d940282c286b9468e3b9 *tests/testthat/Rplots.pdf
+0a1abd30da311b5e2f57814a25925ef7 *tests/testthat/Rplots.pdf
 0a79258a74d7575fb958e707dc3f1f25 *tests/testthat/test-fl_DownloadFjord.R
 13d59da254fdad6835b70d6b81bd2523 *tests/testthat/test-fl_ListFjords.R
 a4b2042e0cd2913d2ae2023dd2b4f383 *tests/testthat/test-fl_LoadFjord.R
