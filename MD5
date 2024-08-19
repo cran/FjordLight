@@ -1,8 +1,8 @@
-1aad6f6760908e9c0a950188e8788800 *DESCRIPTION
+d4f61e48ab2c6d9efbdc700e64b93e1d *DESCRIPTION
 44f90c6000ae7d7feefa667bfc739e5c *LICENSE
 497f6ce35bd541e1d965711988406c14 *NAMESPACE
-82892efc446aac8db5efb9e8a00ccb8d *NEWS.md
-f5390e878d20cefadb2a16fac597fec0 *R/fl_DownloadFjord.R
+a22e28107471677b2415665791677ef2 *NEWS.md
+682652ad89f913869bf45dab87c5ea6b *R/fl_DownloadFjord.R
 d1f1d216bfdb7145a402895d0013b9fd *R/fl_ListFjords.R
 ad0f24e50827d0a54625d17bd0a48230 *R/fl_LoadFjord.R
 d2f3042dde8fb60f0356e27959be500a *R/fl_colorscales.R
@@ -24,7 +24,7 @@ cacb9cae10b4410e4961575c73325e65 *R/flplot_Pfunction.R
 afb73ee38ffa2216f8662ce2ce0b722e *inst/CITATION
 9f6cc1184c612fb27988fe3aa577f036 *inst/doc/fl_example.R
 0362765c03f93c2802512978bced2a63 *inst/doc/fl_example.Rmd
-6d46e05559b70b87bd77a33ba4068ed2 *inst/doc/fl_example.html
+7ea85d2ea7e84a0562226ea9d83eb0b6 *inst/doc/fl_example.html
 8920e27d4a2faeb1daed85a1c9fc801b *inst/extdata/test.nc
 679f5325f68cd2473ea9dc05050fad04 *inst/extdata/test_ClimSD.nc
 74ffdcdeb55ec79654caf4fc798cc2aa *inst/extdata/test_MonthlyKpar.nc
@@ -50,7 +50,7 @@ b3132d498c3711f219bad082e813255a *man/flplot_KPARMonthlyTS.Rd
 086e264c8339b3309a7db02d53f0a64f *man/flplot_climatology.Rd
 6922858517e86f4d1030d915b19412cb *man/flplot_land.Rd
 1fa6875ac9a3eb6efe50940c697a5fba *tests/testthat.R
-0a1abd30da311b5e2f57814a25925ef7 *tests/testthat/Rplots.pdf
+d1ef64f5547345492856a5fbf22a86f9 *tests/testthat/Rplots.pdf
 0a79258a74d7575fb958e707dc3f1f25 *tests/testthat/test-fl_DownloadFjord.R
 13d59da254fdad6835b70d6b81bd2523 *tests/testthat/test-fl_ListFjords.R
 a4b2042e0cd2913d2ae2023dd2b4f383 *tests/testthat/test-fl_LoadFjord.R
